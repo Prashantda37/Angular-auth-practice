@@ -1,0 +1,52 @@
+<div class="w-1/4 mt-5 m-auto drop-shadow-lg rounded">
+	<div class="text-center"><h3>Welcome Login Form</h3></div>
+	<div class="border py-5 px-5 shadow-sm rouned">
+		<form #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && onSubmit()">
+				<div class="form-group mb-4">
+					<label for="email" class="block mb-2 text-gray-600 ">Username</label>
+					<input 
+						type="text" 
+						class="w-full p-2 rounded border" 
+						id="username"
+						[(ngModel)]="model.username"
+						name="username"
+						placeholder="Enter Username"
+						#username="ngModel"
+						required
+						/>
+						<div [hidden]="username.valid || username.pristine"
+								class="text-red-500 p-2">
+							Username is required
+						</div>
+				</div>
+				<div class="form-group mb-4">
+					<label for="password" class="block mb-2 text-gray-600">Password</label>
+					<input 
+						type="password" 
+						class="w-full p-2 rounded border" 
+						id="password" 
+						[(ngModel)]="model.password"
+						name="password"
+						placeholder="Password"
+						#password="ngModel"
+						required
+						/>
+						<div [hidden]="password.valid || password.pristine"
+								class="text-red-500 p-2">
+							Password is required
+						</div>
+				</div>
+				<div *ngIf="error" class="text-red-500">{{error}}</div>
+				<div class="form-group mt-3">
+					<button type="submit" class="w-full px-6 py-2.5 bg-blue-600 text-white" [disabled]="!loginForm.form.valid" >Login</button>
+				</div>
+				<div class="form-group my-4 text-center">
+					-- Or Sign in with --
+				</div>
+				<div  class="form-group text-center">
+					<button class="btn btn-primary">Google</button>
+					<button class="btn btn-primary ml-1">Facebook</button>
+				</div>
+		</form>
+	</div>
+</div>
